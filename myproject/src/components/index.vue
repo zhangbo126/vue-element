@@ -1,18 +1,24 @@
 <template>
   <div class="hello">
    
-   
-   
+   <Pub :max="max" :v="v"></Pub>
   </div>
 </template>
 
 <script>
+
+import Pub from '../base/pub.vue'
 export default {
   name: 'index',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      max:4,
+      v:2,
     }
+  },
+  components: {
+    Pub
   }
 }
 </script>
