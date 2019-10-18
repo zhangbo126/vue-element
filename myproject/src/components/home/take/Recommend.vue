@@ -45,7 +45,6 @@ export default {
 
   .Remmd{
       width: 100%;
-      margin-bottom: 50px;
       .remmdtitle{
           padding: 10px 2px;
           box-sizing: border-box;
@@ -57,7 +56,7 @@ export default {
           width: 100%;
           margin-top: 30px;
           box-sizing: border-box;
-          padding:0px 15px;
+          padding:10px 15px;
           .remmdSelet{
               width: 20%;
               padding: 0px 18px;

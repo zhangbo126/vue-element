@@ -59,3 +59,11 @@ a {
 .el-rate__icon{
   font-size:30px;
 }
+
+.el-rate__icon{
+  font-size: 25px;
+}
+
+.el-rate__text{
+  font-size: 20px;
+}

@@ -6,6 +6,7 @@ import Find from '@/components/home/find/Find'
 import Mine from '@/components/home/mine/Mine'
 import Order from '@/components/home/order/Order'
 import Take from '@/components/home/take/Take'
+import Seller from '@/components/seller'
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +21,11 @@ export default new Router({
       path: '/index',
       name: 'index',
       component: index
+    },
+    {
+      path:'/seller',
+      name:"Seller",
+      component:Seller,
     },
     {
       path:'/home',

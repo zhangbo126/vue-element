@@ -9,7 +9,11 @@
         <div class="search" ref="search_bar">
           <input type="text" placeholder="搜索商家、商品名称">
         </div>
+          <div class="search fixed" v-show="isserchShow">
+          <input type="text" placeholder="搜索商家、商品名称">
+        </div>
         <div class="tags">
+          
           <span v-for="(tag,index) in tags" :key="index">
             <a :href="tag.url">{{ tag.name }}</a>
           </span>
@@ -27,15 +31,30 @@ import Geo from '@/base/Geo.vue'
   export default {
     data() {
      return{
-        tags: []
+        tags: [],
+        isserchShow:false
      }
+    },
+    methods: {
+      scrollHead(){
+        let top = this.$refs.search_bar.getBoundingClientRect().top
+        if(top<0){
+          this.isserchShow=true
+        }else{
+          this.isserchShow=false
+        }
+      }
+    },
+    destroyed(){
+     removeEventListener('scroll',this.scrollHead)
     },
     created() {
         // console.log(TAGS)
+       addEventListener('scroll',this.scrollHead)
+
       this.$axios({
         url:TAGS,
       }).then((res) => {
-
         this.tags = res.data
       })
     },

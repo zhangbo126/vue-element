@@ -4,19 +4,21 @@ import Vue from 'vue'
 import App from './App'
 import fastclick from 'fastclick'
 import router from './router'
-import store from './store'
+import store from './store' //vuex
 import axios from 'axios'
 import qs from 'qs'
 import 'lib-flexible'
 
-import './assets/css/index.css'
-import './assets/css/normalize.css'
+import '@/filter' //过滤器
 
 import ElementUI from'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
+
+import './assets/css/index.css'
+import './assets/css/normalize.css'
 
 //my style
 

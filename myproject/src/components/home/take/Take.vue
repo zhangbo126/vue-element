@@ -18,11 +18,14 @@ import Recommend from '@/components/home/take/recommend.vue'
 import Top from '@/components/home/take/top.vue'
 import SellerList from '@/components/home/take/SellerList.vue'
 
+
+
 export default {
     name:'Take',
     components: {
         AD,Category,Recommend,Top,SellerList
-    }
+    },
+   
 
 }
 </script>

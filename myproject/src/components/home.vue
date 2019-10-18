@@ -44,6 +44,7 @@
 </script>
 <style scoped lang="stylus">
   .home {
+         margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     width: 100%;
