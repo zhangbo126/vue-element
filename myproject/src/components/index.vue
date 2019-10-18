@@ -1,24 +1,32 @@
 <template>
   <div class="hello">
-   
-   <Pub :max="max" :v="v"></Pub>
+   <keep-alive>
+<component :is="component"></component>
+
+   </keep-alive>
+   <button @click="component='keep-tem'">keep-tem</button>
+   <button @click="component='pub-tem'">pub-tem</button>
   </div>
 </template>
 
 <script>
 
 import Pub from '../base/pub.vue'
+import Keep from '../base/Keep.vue'
+
 export default {
   name: 'index',
   data () {
     return {
+      component:"pub-tem",
       msg: 'Welcome to Your Vue.js App',
       max:4,
       v:2,
     }
   },
   components: {
-    Pub
+    "pub-tem":Pub,
+    "keep-tem":Keep
   }
 }
 </script>

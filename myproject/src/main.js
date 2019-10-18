@@ -8,13 +8,20 @@ import store from './store'
 import axios from 'axios'
 import qs from 'qs'
 import 'lib-flexible'
-import ElementUI from'element-ui'
-  
-import 'element-ui/lib/theme-chalk/index.css'
+
 import './assets/css/index.css'
 import './assets/css/normalize.css'
 
+import ElementUI from'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+
+//my style
+
+
+Vue.use(MintUI)
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 fastclick.attach(document.body)// body内所有click 300毫秒延迟都将去掉

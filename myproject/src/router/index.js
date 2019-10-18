@@ -14,11 +14,10 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
      redirect:'/home/take',
     },
     {
-      path: '/',
+      path: '/index',
       name: 'index',
       component: index
     },
