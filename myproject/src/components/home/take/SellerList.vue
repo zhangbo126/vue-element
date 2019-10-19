@@ -48,8 +48,9 @@
       }
     },
    methods:{
-     sellerH(seller){
-         
+     sellerH(seller){  
+       //将当前商品数据存储到本地会话 
+       localStorage.setItem('users',JSON.stringify(seller))
         this.$store.commit({
             type:'addSelles',
             seller:seller,

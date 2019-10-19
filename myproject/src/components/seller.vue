@@ -2,8 +2,7 @@
   <div class="seller">
         <Top :topData="userid"></Top>
         <GoodsList :list="userid"></GoodsList>
-        <Shop-cart></Shop-cart>
-       
+        <Shop-cart></Shop-cart>     
   </div>
 </template>
 <script>

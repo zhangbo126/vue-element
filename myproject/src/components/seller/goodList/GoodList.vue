@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="category">
       <ul class="list">
-        <li class="item" :class="{active: activeCate == 0}" @click="selectList" :data-index="0"
+        <li class="item" :class="{active: activeCate == index}" @click="selectList(index)" :data-index="0"
           v-for="(good,index) in goodsList.types" :key="index">
           <div class="title"><span class="name">{{good.name}}</span></div>
         </li>
@@ -20,8 +20,7 @@
           <ul class="goods-list" v-for="(eat,i) in item.goods" :key="i">
             <li class="goods-item">
               <div class="logo">
-                <img :src="eat.picture" alt="">
-                
+                <img :src="eat.picture" alt="">             
               </div>
               <div class="content">
                 <div class="name">{{eat.name}}</div>
@@ -36,9 +35,9 @@
                 <div class="control">
                   <span class="price">&yen;{{eat.price}}</span>
                   <span class="shopping">
-                    <i class="icon-take icon-jian" @click="reduce()"></i>
-                    <span class="count">66</span>
-                    <i class="icon-take icon-jia" @click="add()"></i>
+                    <i class="icon-take icon-jian" @click="reduce(eat.price)"></i>
+                    <span class="count">0</span>
+                    <i class="icon-take icon-jia" @click="add(eat,i)"></i>
                   </span>
                 </div>
               </div>
@@ -62,6 +61,7 @@
         activeCate: 0, // 激活的分类
         cateItemsHeight: [0], // 商品列表每一个分类列表的高度
         goodsList: [], //  产品列表
+        count:0,
       }
     },
     props: ['list'],
@@ -73,47 +73,66 @@
         url: GOODS,
       }).then((res) => {
          //根据 id 查找对应商铺的信息  
+         let userId = JSON.parse(localStorage.getItem('users'))
          for(let i in res.data){       
-            if(res.data[i].sellerId==this.list.id){            
+            if(res.data[i].sellerId==userId.id){            
                 this.goodsList = res.data[i]  
-                console.log(this.goodsList) 
-                return
-               
+                // console.log(this.goodsList) 
+                return            
             }
          }
-       
-
       })
-
-      
-
     },
     updated() {
       // 在goodsList被初始化之后，将每组列表项的高度与之前的高度相加，再存储在高度数组中
-
+        //console.log(this.$refs.goods)
+        this.$refs.cateItems.forEach(item=>{
+          let lastHeight = this.cateItemsHeight[this.cateItemsHeight.length-1]
+          this.cateItemsHeight.push(item.offsetHeight + lastHeight)
+        })
     },
     methods: {
       // 当选择左侧菜单时，根据自定义属性index获取所选的菜单ID，根据ID去高度数组里找到将要滑动的位置
-      selectList(event) {},
+      selectList(event) {
+        this.activeCate=event
+        this.$refs.goods.scrollTop = this.cateItemsHeight[event] //点击左侧商品类型 显示对应 菜品
+      },
       sliderList(event) {
         // 随着右侧菜单的滑动，从后向前比较，如果top大于等于某个分组，说明该组已经滑动到顶部，则将左侧菜单对应的项目设置样式
+          let scrollTop = event.target.scrollTop
+          for(let i = this.cateItemsHeight.length-1;i>=0;i--){
+            if(scrollTop>=this.cateItemsHeight[i]){
+                this.activeCate=i;
+                break;
+            }
+          }      
       },
       reduce(item) {
         //  商品数量减一
         //  使用$set进行设置,则count属性也是响应式的
+          this.count--;
+          if(this.count<=0){
+            this.count=0
+          }
+
       },
-      add(item) {
+      add(item,index) {
         //  商品数量加一
+        //this.count++;
+        // console.log(item)
+        this.$store.commit('shoppCart',item)
       }
+    },
+ 
     }
-  }
+
+
 
 </script>
 <style lang="stylus" scoped>
   .wrap {
     flex: auto;
     display: flex;
-
     // height:400px;
     .category {
       flex: none;

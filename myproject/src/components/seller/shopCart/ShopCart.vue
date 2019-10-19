@@ -90,6 +90,9 @@
   </div>
 </template>
 <script>
+
+import {mapGetters} from 'vuex'
+
 export default {
   data () {
     return {
@@ -120,6 +123,13 @@ export default {
   mounted () {
     this.slideHeight = this.$refs.slide.offsetHeight
     this.showList = false
+  },
+  computed: {
+     ...mapGetters(['shoppCar'])
+  },
+ 
+  updated () {
+     console.log(this.shoppcar)
   }
 }
 </script>

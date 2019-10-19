@@ -20,7 +20,10 @@ export default{
    
     userid(state){
         return state.seller
-    } 
-
-       
+    }, 
+    shoppCart(state){
+         
+        return state.shoppCart
+    }
+      
 }

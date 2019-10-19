@@ -8,5 +8,6 @@ export default{
         integral:1000,
         wallet:123123,
     },
-    seller:{}
+    seller:{},
+    shoppCart:{}
 }

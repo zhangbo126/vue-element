@@ -26,7 +26,6 @@ export default {
       data(){
           return{
               remmds:[
-
               ]
           }
       },
@@ -44,7 +43,8 @@ export default {
 <style scoped lang="less">
 
   .Remmd{
-      width: 100%;
+      width: 95%;
+      margin: 0 auto;
       .remmdtitle{
           padding: 10px 2px;
           box-sizing: border-box;
@@ -56,10 +56,11 @@ export default {
           width: 100%;
           margin-top: 30px;
           box-sizing: border-box;
-          padding:10px 15px;
+        
           .remmdSelet{
-              width: 20%;
-              padding: 0px 18px;
+              width: 25%;
+              box-sizing: border-box;
+               padding: 0px 4px;
               a{
                   display: block;
                   p{
@@ -72,12 +73,13 @@ export default {
                   }
               }
               button{
-                  width: 1.733333rem; /* 40/75 */
+                    width: 94%; /* 40/75 */
                   background-color:#ffffff;
                    color:#0099cc;
                    border: 1px solid #0099cc;
                    text-align: center;
-                   line-height: 40px;
+                   line-height: 4vh;
+                  
               }
           }
       }

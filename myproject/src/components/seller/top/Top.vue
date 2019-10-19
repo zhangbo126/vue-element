@@ -17,11 +17,11 @@
         </div>
         <div class="name cl">
           <div class="logo">
-            <img :src="topData.logo">
+            <img :src="users.logo">
           </div>
           <div class="content">
             <div class="title">
-              <span class="text">{{topData.name}}欢迎光临，用餐高峰期请提前下单，谢谢。</span>
+              <span class="text">{{users.name}}欢迎光临，用餐高峰期请提前下单，谢谢。</span>
               <i class="icon-take icon-jiantou3"></i>
             </div>
             <div class="notice">欢迎光临，用餐高峰期请提前下单，谢谢。欢迎光临</div>
@@ -31,12 +31,12 @@
     </div>
     <div class="discount cl">
       <ul class="list">
-        <li class="item" v-for="t in topData.discount" :key="t.id">
+        <li class="item" v-for="t in users.discount" :key="t.id">
           <i :class="['icon-take','icon-'+t.icon]" style="font-size:20px;"></i><span>{{t.content}}</span>
         </li>
       </ul>
       <div class="drop">
-        <span>{{topData.discount.length}}个活动</span>
+        <span>{{users.discount.length}}个活动</span>
         <i class="icon-take icon-jiantou"></i>
       </div>
     </div>
@@ -54,7 +54,7 @@ export default {
   name: 'Top',
   data () {
     return {
-         
+        users:[] 
     }
   },
   props: ['topData'],
@@ -63,6 +63,11 @@ export default {
       this.$router.back()
     }
   },
+  created () {
+   // console.log(localStorage.getItem('users'))
+    let users = JSON.parse(localStorage.getItem('users'))
+    this.users = users
+  }
 
  
 }

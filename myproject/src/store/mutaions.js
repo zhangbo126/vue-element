@@ -11,6 +11,16 @@ export default{
     // 将对 商家 的数据 保存到 vuex 中
     [types.ADD_SELLES](state,selles){      
         state.seller = selles.seller
-   
+       // localStorage.setItem("users",selles.seller)
+    },
+    [types.ADD_SHOPPCART](state,shoppcart){
+           
+        //   let s =JSON.stringify(shoppcart)            
+        //   state.shoppCart+=JSON.parse(s)
+        //   console.log(state.shoppCart)
+        
+        // console.log(state.shoppCart) 
+
     }
+
 }
